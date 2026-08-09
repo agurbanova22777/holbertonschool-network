@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
-# Changes localhost and facebook.com resolution
 
-sed -i 's/^127\.0\.0\.1[[:space:]]\+localhost/127.0.0.2 localhost/' /etc/hosts
-
-if grep -qE '^[[:space:]]*8\.8\.8\.8[[:space:]]+facebook\.com([[:space:]]|$)' /etc/hosts; then
-    :
-else
-    echo "8.8.8.8 facebook.com" >> /etc/hosts
-fi
+sed 's/^127\.0\.0\.1[[:space:]]\+localhost/127.0.0.2 localhost/' /etc/hosts > /tmp/hosts
+cat /tmp/hosts > /etc/hosts
+grep -q "^8.8.8.8[[:space:]]\+facebook.com" /etc/hosts || echo "8.8.8.8 facebook.com" >> /etc/hosts
