@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# Displays listening TCP/UDP ports with the PID and program name
-
+# Displays listening TCP and UDP sockets with PID and program name
 netstat -lpn
